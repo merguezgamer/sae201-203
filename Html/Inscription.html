@@ -32,15 +32,25 @@
         </div>
         <form action="..\php\connexion.php" method="post">
             <div class="mb-3">
-                <input type="text" class="form-control" id="login" name="login" placeholder="Login" required>
+                <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom" required>
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
+                <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Nom" required>
             </div>
-            <button type="submit" class="btn btn-primary">Se connecter</button>
             <div>
-                <p>Vous n'avez pas de compte ? <a href="..\Html\inscription.html">Inscrivez-vous</a></p>
+                <input type="text" class="form-control" id="courriel" name="courriel" placeholder="Adresse mail universitaire" required>
             </div>
+            <div class="mb-3">
+                <input type="   " class="form-control" id="password" name="password" placeholder="Mot de passe" required>
+            </div>
+            <div class="mb-3">
+                <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirmer le mot de passe" required>
+            </div>
+            <select name="role" id="role" class="form-select mb-3">
+                <option value="etudiant">Etudiant</option>
+                <option value="enseignant">Enseignant</option>
+            </select>
+            <button type="submit" class="btn btn-primary">Se connecter</button>
         </form>
     </div>
     <!-- lien vers le fichier javascript -->
