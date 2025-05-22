@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>acceuil</title>
     <!--style-->
-    <link rel="stylesheet" href="..\css\style.css">
+    <link rel="stylesheet" href="css\style.css">
 
     <!-- Bootstrap CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
@@ -30,16 +30,16 @@
         <div class="text-center">
             <p>entrez votre identifiant et votre mot de passe</p>
         </div>
-        <form action="..\php\connexion.php" method="post">
+        <form action="php\login.php" method="post">
             <div class="mb-3">
-                <input type="text" class="form-control" id="login" name="login" placeholder="Login" required>
+                <input type="text" class="form-control" id="courriel" name="courriel" placeholder="Login" required>
             </div>
             <div class="mb-3">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
             </div>
             <button type="submit" class="btn btn-primary">Se connecter</button>
             <div>
-                <p>Vous n'avez pas de compte ? <a href="..\Html\Inscription.php">Inscrivez-vous</a></p>
+                <p>Vous n'avez pas de compte ? <a href="Html\inscription.php">Inscrivez-vous</a></p>
             </div>
         </form>
     </div>

@@ -31,9 +31,9 @@
             <div class="text-center">
                 <p>entrez votre identifiant et votre mot de passe</p>
             </div>
-            <form action="..\php\connexion.php" method="post">
+            <form action="..\php\signin.php" method="post">
                 <div class="mb-3">
-                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Nom" required>
+                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Prenom" required>
                 </div>
                 <div class="mb-3">
                     <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Nom" required>
@@ -42,7 +42,7 @@
                     <input type="text" class="form-control" id="courriel" name="courriel" placeholder="Adresse mail universitaire" required>
                 </div>
                 <div class="mb-3">
-                    <input type="   " class="form-control" id="password" name="password" placeholder="Mot de passe" required>
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>
                 </div>
                 <div class="mb-3">
                     <input type="password" class="form-control" id="confirm_password" name="confirm_password" placeholder="Confirmer le mot de passe" required>
@@ -51,6 +51,7 @@
                     <option value="" disabled selected>Choisissez votre rôle</option>
                     <option value="etudiant">Etudiant</option>
                     <option value="enseignant">Enseignant</option>
+                    <option value="admin">admin</option>
                 </select>
                 <button type="submit" class="btn btn-primary">Se connecter</button>
             </form>
