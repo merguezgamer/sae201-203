@@ -13,12 +13,12 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="col col-m-12" style="background-color: rgb (15 ,39 ,59);">
-        <header> 
-            <h1>Acceuil</h1>
-            <h1>Reservation</h1>
-            <h1>Aide</h1>
-        </header>
+    <div class="row">
+        <div class="col col-m-12" style="background-color: rgb (15 ,39 ,59);">
+                <h1 class="col col-m-3">Acceuil</h1>
+                <h1>Reservation</h1>
+                <h1>Aide</h1>
+        </div>
     </div>
     <a href="reserver_materiel.php" class="btn btn-primary">reservation</a>
     <a href="dashboard.php" class="btn btn-primary">dashboard</a>
