@@ -55,6 +55,9 @@
                 </select>
                 <button type="submit" class="btn btn-primary">Se connecter</button>
             </form>
+            <div>
+                <p>Vous avez déjà un compte ? <a href="..\index.php">Connectez-vous</a></p>
+            </div>
         </div>
         <div class="col col-5 offset-1 ">
             <div class="zone_role">

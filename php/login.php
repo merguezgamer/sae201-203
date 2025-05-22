@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit; // On arrête l'exécution après la redirection
             }else{
                 // Redirection vers la page d'accueil ou tableau de bord
-                header("Location: ../Html/inscription.php"); // À adapter selon la page que tu souhaites rediriger
+                header("Location: ..\Html\acceuil.php"); // À adapter selon la page que tu souhaites rediriger
                 exit; // On arrête l'exécution après la redirection
             }
         } else {

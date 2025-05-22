@@ -20,6 +20,8 @@
             <h1>Aide</h1>
         </header>
     </div>
-    
-</body>
+    <a href="reserver_materiel.php" class="btn btn-primary">reservation</a>
+    <a href="dashboard.php" class="btn btn-primary">dashboard</a>
+    <a href="..\php\logout.php" class="btn btn-light">Déconnexion</a>
+</body> 
 </html>

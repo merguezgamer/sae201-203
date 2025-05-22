@@ -24,6 +24,7 @@
       background-color: #e9ecef;
     }
   </style>
+
 </head>
 <body>
   <!-- Top Navbar -->
@@ -31,7 +32,7 @@
     <div class="container-fluid">
       <a class="navbar-brand" href="#">Mon Dashboard</a>
       <div class="d-flex">
-        <a href="logout.php" class="btn btn-light">Déconnexion</a>
+        <a href="..\php\logout.php" class="btn btn-light">Déconnexion</a>
       </div>
     </div>
   </nav>
@@ -41,10 +42,10 @@
       <!-- Sidebar -->
       <nav class="col-md-2 d-none d-md-block sidebar">
         <div class="pt-3">
-          <a href="#">Accueil</a>
-          <a href="#">Profil</a>
-          <a href="#">Paramètres</a>
-          <a href="#">Autre</a>
+          <a href="acceuil.php">Accueil</a>
+          <a href="ajout_materiel.php">Ajout materiel</a>
+          <a href="liste_materiel.php">liste_materiel</a>
+          <a href="admin_validation.php">validation</a>
         </div>
       </nav>
 
