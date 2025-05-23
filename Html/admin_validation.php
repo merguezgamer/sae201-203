@@ -9,13 +9,18 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 }
 
 // Traitement validation/refus
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = $_POST['reservation_id'];
-    $action = $_POST['action']; // "valider" ou "refuser"
-    $newStatut = $action === 'valider' ? 'validée' : 'refusée';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'], $_POST['reservation_id'])) {
+    $reservation_id = $_POST['reservation_id'];
+    $action = $_POST['action'];
 
-    $stmt = $pdo->prepare("UPDATE reservation SET statut = :statut WHERE id = :id");
-    $stmt->execute([':statut' => $newStatut, ':id' => $id]);
+    if ($action === 'valider') {
+        $stmt = $pdo->prepare("UPDATE reservation SET statut = 'Validée' WHERE id = :id");
+        $stmt->execute(['id' => $reservation_id]);
+    } elseif ($action === 'refuser') {
+        // Marquer la réservation comme refusée (au lieu de la supprimer)
+        $stmt = $pdo->prepare("UPDATE reservation SET statut = 'Refusée' WHERE id = :id");
+        $stmt->execute(['id' => $reservation_id]);
+    }
 }
 
 // Récupère les réservations en attente
@@ -74,6 +79,9 @@ $reservations = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         <?php endif; ?>
         </tbody>
     </table>
+    <div class="text-center">
+        <a href="dashboard.php" class="btn btn-primary">Retour</a>
+    </div>
 </div>
 </body>
 </html>

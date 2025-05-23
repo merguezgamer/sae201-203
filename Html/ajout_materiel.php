@@ -1,6 +1,6 @@
 <?php
 require_once '..\php\config.php'; // Assure-toi que $pdo est bien initialisé ici
-
+session_start();
 if (($_SESSION['role']!== 'admin')) {
     header("Location: login.php");
     exit;

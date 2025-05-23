@@ -70,7 +70,7 @@ try {
                             <td><?= htmlspecialchars($m['satut']) ?></td>
                             <td>
                                 <a href="modifier_materiel.php?id=<?= $m['id'] ?>" class="btn btn-sm btn-warning">✏️ Modifier</a>
-                                <a href="supprimer_materiel.php?id=<?= $m['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Supprimer ce matériel ?')">🗑️ Supprimer</a>
+                                <a href="..\php\supprimer_materiel.php?id=<?= $m['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirm('Supprimer ce matériel ?')">🗑️ Supprimer</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

@@ -5,3 +5,16 @@
 .sous-titre{
     background-color: rgba(193, 230, 236, 1)
 }
+.sidebar {
+    min-height: 100vh;
+    background-color: #f8f9fa;
+}
+.sidebar a {
+    display: block;
+    padding: 12px 20px;
+    color: #333;
+    text-decoration: none;
+}
+.sidebar a:hover {
+    background-color: #e9ecef;
+}
