@@ -52,7 +52,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="alert alert-info"><?= $message ?></div>
     <?php endif; ?>
 
-    <form method="post">
+    <form method="post" style="background-color:rgb(193, 230, 236); ">
         <div class="mb-3">
             <label for="ref" class="form-label">Référence</label>
             <input type="text" class="form-control" id="ref" name="ref">
