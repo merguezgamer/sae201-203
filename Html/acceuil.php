@@ -15,9 +15,9 @@
 <body>
     <div class="row">
         <div class="col col-m-12" style="background-color: rgb (15 ,39 ,59);">
-                <h1 class="col col-m-3">Acceuil</h1>
-                <h1>Reservation</h1>
-                <h1>Aide</h1>
+                <h1 class="col col-m-3"  style="background-color:rgb(15, 39, 59); color:white">Acceuil</h1>
+                <h1  style="background-color:rgb(15, 39, 59); color:white">Reservation</h1>
+                <h1  style="background-color:rgb(15, 39, 59); color:white">Aide</h1>
         </div>
     </div>
     <a href="reserver_materiel.php" class="btn btn-primary">reservation</a>
