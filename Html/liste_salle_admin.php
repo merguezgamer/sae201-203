@@ -13,6 +13,7 @@ $salle = getRoom($pdo);
     <title>Liste du Matériel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="../js/liste_materiel.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-light">
 <div class="container mt-5">
@@ -27,6 +28,7 @@ $salle = getRoom($pdo);
                     <th>ID</th>
                     <th>numéro</th>
                     <th>Statut</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>

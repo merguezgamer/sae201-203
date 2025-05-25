@@ -15,7 +15,7 @@ if ($id_materiel) {
         $stmt = $pdo->prepare("DELETE FROM materiel WHERE id = :id");
         $stmt->execute([':id' => $id_materiel]);
         echo "✅ Matériel supprimé avec succès.";
-        header("Location: ../Html/liste_materiel.php");
+        header("Location: dashboard.php");
         exit;
     }
 

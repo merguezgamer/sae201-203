@@ -55,6 +55,7 @@ $reservations = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <title>Réserver un Matériel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
     <script>
         function updateDateRendu() {
             const dateEmprunt = document.querySelector('[name="date_emprunt"]').value;
@@ -71,6 +72,41 @@ $reservations = $stmt2->fetchAll(PDO::FETCH_ASSOC);
     </script>
 </head>
 <body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="acceuil.php">Accueil</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="reserver_materiel.php">Réserver</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="liste_materiel.php">Matériel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="liste_salle.php">Salles</a>
+                </li>
+                <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.php">Admin</a>
+                </li>
+                <?php endif; ?>
+                <?php if (isset($_SESSION['role'])): ?>
+                <li class="nav-item">
+                    <a class="btn btn-outline-light ms-2 bg-light" href="..\php\logout.php">Déconnexion</a>
+                </li>
+                <?php else: ?>
+                <li class="nav-item">
+                    <a class="btn btn-outline-light ms-2" href="..\php\login.php">Se connecter</a>
+                </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container mt-5">
     <h2>Réserver un Matériel</h2>
 
@@ -129,7 +165,7 @@ $reservations = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 
     <h4>Mes Réservations</h4>
     <table class="table table-bordered table-striped">
-        <thead class="table-light">
+        <thead class="table-dark">
             <tr>
                 <th>Matériel</th>
                 <th>Quantité</th>

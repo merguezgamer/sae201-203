@@ -13,8 +13,44 @@ $materiels = getMateriels($pdo);
     <title>Liste du Matériel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="../js/liste_materiel.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="acceuil.php">Accueil</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="reserver_materiel.php">Réserver</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="liste_materiel.php">Matériel</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="liste_salle.php">Salles</a>
+                </li>
+                <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="dashboard.php">Admin</a>
+                </li>
+                <?php endif; ?>
+                <?php if (isset($_SESSION['role'])): ?>
+                <li class="nav-item">
+                    <a class="btn btn-outline-light ms-2 bg-light" href="..\php\logout.php">Déconnexion</a>
+                </li>
+                <?php else: ?>
+                <li class="nav-item">
+                    <a class="btn btn-outline-light ms-2" href="..\php\login.php">Se connecter</a>
+                </li>
+                <?php endif; ?>
+            </ul>
+        </div>
+    </div>
+</nav>
 <div class="container mt-5">
     <h2 class="mb-4">Liste du Matériel</h2>
 
@@ -70,7 +106,7 @@ $materiels = getMateriels($pdo);
             </tbody>
         </table>
     </div>
-    <a href="dashboard.php" class="btn btn-secondary">Retour</a>
+    <a href="acceuil.php" class="btn btn-secondary">Retour</a>
 </div>
 </body>
 </html>

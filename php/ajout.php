@@ -38,9 +38,9 @@ function ajouterSalle($pdo, $data) {
     $stmt = $pdo->prepare($sql);
 
     $params = [
-        'id' => $data['id'],
-        'nom' => $data['nom'],
-        'statut' => $data['statut']
+        ':id' => $data['id'],
+        ':nom' => $data['nom'],
+        ':statut' => $data['statut']
     ];
 
     if ($stmt->execute($params)) {

@@ -1,6 +1,7 @@
 <?php
 require_once '../php/config.php';
-require_once '../php/validation.php'; // fichier où tu mets tes fonctions PHP
+require_once '../php/validation.php'; 
+require_once '../php/verifier_admin.php';
 
 // verifier que l'utilisateur est un administrateur
 verifierAdmin();
@@ -19,8 +20,9 @@ $reservations = recupererReservationsEnAttente($pdo);
     <meta charset="UTF-8">
     <title>Validation des Réservations</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="bg-light">
+<body >
 <div class="container mt-5">
     <h2>Réservations à valider</h2>
 

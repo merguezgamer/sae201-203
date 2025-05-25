@@ -2,6 +2,23 @@
 require_once '../php/config.php';
 require_once '../php/verifier_admin.php';
 verifierAdmin();
+
+// Récupérer les statistiques
+// Nombre de réservations (matériel)
+$stmt = $pdo->query("SELECT COUNT(*) FROM reservation");
+$nb_reservations = $stmt->fetchColumn();
+
+// Nombre de matériels
+$stmt = $pdo->query("SELECT COUNT(*) FROM materiel");
+$nb_materiels = $stmt->fetchColumn();
+
+// Nombre de salles
+$stmt = $pdo->query("SELECT COUNT(*) FROM salle");
+$nb_salles = $stmt->fetchColumn();
+
+// Nombre d'utilisateurs
+$stmt = $pdo->query("SELECT COUNT(*) FROM utilisateurs");
+$nb_utilisateurs = $stmt->fetchColumn();
 ?>
 
 <!DOCTYPE html>
@@ -41,21 +58,40 @@ verifierAdmin();
         <!-- Main content -->
         <main class="col-md-10 ms-sm-auto px-md-4 py-4">
           <h1 class="h2">Bienvenue sur votre tableau de bord</h1>
-          <p>Contenu principal ici. Tu peux ajouter des graphiques, des tableaux, etc.</p>
-          <div class="row">
-            <div class="col-md-6 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Carte 1</h5>
-                  <p class="card-text">Infos ou statistiques.</p>
+          <div class="row g-4 mb-4">
+            <div class="col-md-3">
+              <div class="card text-bg-primary shadow">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Réservations</h5>
+                  <p class="display-5"><?= $nb_reservations ?></p>
+                  <p class="card-text">Total des réservations de matériel</p>
                 </div>
               </div>
             </div>
-            <div class="col-md-6 mb-3">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Carte 2</h5>
-                  <p class="card-text">Autres données ou actions.</p>
+            <div class="col-md-3">
+              <div class="card text-bg-success shadow">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Matériels</h5>
+                  <p class="display-5"><?= $nb_materiels ?></p>
+                  <p class="card-text">Nombre de matériels</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card text-bg-warning shadow">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Salles</h5>
+                  <p class="display-5"><?= $nb_salles ?></p>
+                  <p class="card-text">Nombre de salles</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="card text-bg-info shadow">
+                <div class="card-body text-center">
+                  <h5 class="card-title">Utilisateurs</h5>
+                  <p class="display-5"><?= $nb_utilisateurs ?></p>
+                  <p class="card-text">Nombre d'utilisateurs</p>
                 </div>
               </div>
             </div>
