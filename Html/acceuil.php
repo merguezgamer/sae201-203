@@ -52,7 +52,7 @@ session_start();
         <div class="col-md-3">
             <div class="card shadow h-100">
                 <div class="card-body text-center">
-                    <h5 class="card-title">📅 Réserver</h5>
+                    <h5 class="card-title">Réserver</h5>
                     <p class="card-text">Réservez du matériel facilement.</p>
                     <a href="reserver_materiel.php" class="btn btn-primary">Réserver</a>
                 </div>
@@ -61,7 +61,7 @@ session_start();
         <div class="col-md-3">
             <div class="card shadow h-100">
                 <div class="card-body text-center">
-                    <h5 class="card-title">📦 Liste du matériel</h5>
+                    <h5 class="card-title">Liste du matériel</h5>
                     <p class="card-text">Consultez tout le matériel disponible.</p>
                     <a href="liste_materiel.php" class="btn btn-success">Voir le matériel</a>
                 </div>
@@ -70,7 +70,7 @@ session_start();
         <div class="col-md-3">
             <div class="card shadow h-100">
                 <div class="card-body text-center">
-                    <h5 class="card-title">🏛️ Liste des salles</h5>
+                    <h5 class="card-title">Liste des salles</h5>
                     <p class="card-text">Consultez les salles disponibles.</p>
                     <a href="liste_salle.php" class="btn btn-warning text-white">Voir les salles</a>
                 </div>
@@ -79,7 +79,7 @@ session_start();
         <div class="col-md-3">
             <div class="card shadow h-100">
                 <div class="card-body text-center">
-                    <h5 class="card-title">🗂️ Mes réservations</h5>
+                    <h5 class="card-title">Mes réservations</h5>
                     <p class="card-text">Voir toutes vos réservations.</p>
                     <a href="mes_reservations.php" class="btn btn-info text-white">Mes réservations</a>
                 </div>

@@ -1,12 +1,5 @@
 <?php
 require_once '../php/modifier.php';
-require_once '../php/verifier_admin.php';
-
-verifierAdmin();
-
-if (!isset($_GET['id'])) {
-    die("ID manquant.");
-}
 
 $id = intval($_GET['id']);
 $message = "";
@@ -49,6 +42,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Mon Dashboard</a>
+    <div class="d-flex">
+      <a href="..\php\logout.php" class="btn btn-light">Déconnexion</a>
+    </div>
+  </div>
+</nav>
 <div class="container mt-5">
     <h2>Modifier un Matériel</h2>
 
@@ -67,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         </div>
         <?php } ?>
         <button type="submit" class="btn btn-primary">Enregistrer</button>
-        <a href="liste_materiel.php" class="btn btn-secondary">Retour</a>
+        <a href="liste_materiel_admin.php" class="btn btn-secondary">Retour</a>
     </form>
 </div>
 </body>

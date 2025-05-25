@@ -21,6 +21,14 @@ $reservations = recupererReservations($pdo);
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Mon Dashboard</a>
+    <div class="d-flex">
+      <a href="..\php\logout.php" class="btn btn-light">Déconnexion</a>
+    </div>
+  </div>
+</nav>
 <div class="container mt-5">
     <h1 class="mb-4">Gestion des Réservations</h1>
 
@@ -64,7 +72,7 @@ $reservations = recupererReservations($pdo);
         </table>
     <?php endif; ?>
     <div class="text-center">
-        <a href="dashboard.php" class="btn btn-secondary">Retour au Dashboard</a>
+        <a href="dashboard.php" class="btn btn-primary">Retour au dashboard</a>
     </div>
 </div>
 </body>

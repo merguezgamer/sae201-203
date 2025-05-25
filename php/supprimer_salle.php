@@ -16,7 +16,7 @@ if ($id_salle) {
         $stmt = $pdo->prepare("DELETE FROM salle WHERE id = :id");
         $stmt->execute([':id' => $id_salle]);
         echo "✅ Salle supprimée avec succès.";
-        header("Location: dashboard.php");
+        header("Location: ..\php\dashboard.php");
         exit;
     }
 

@@ -1,7 +1,6 @@
 <?php
-require_once '../php/ajouter.php';
+require_once '../php/ajout.php';
 require_once '../php/verifier_admin.php';
-session_start();
 
 verifierAdmin();
 
@@ -22,6 +21,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Mon Dashboard</a>
+    <div class="d-flex">
+      <a href="..\php\logout.php" class="btn btn-light">Déconnexion</a>
+    </div>
+  </div>
+</nav>
 <div class="container mt-5">
     <h2 class="mb-4">Ajouter un Matériel</h2>
 

@@ -10,14 +10,22 @@ $salle = getRoom($pdo);
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Liste du Matériel</title>
+    <title>Liste des Salles</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="../js/liste_materiel.js" defer></script>
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Mon Dashboard</a>
+    <div class="d-flex">
+      <a href="..\php\logout.php" class="btn btn-light">Déconnexion</a>
+    </div>
+  </div>
+</nav>
 <div class="container mt-5">
-    <h2 class="mb-4">Liste du Matériel</h2>
+    <h2 class="mb-4">Liste des Salles</h2>
 
     <a href="ajout_salle.php" class="btn btn-success mb-3">➕ Ajouter une salle</a>
 
@@ -26,7 +34,7 @@ $salle = getRoom($pdo);
             <thead class="table-dark">
                 <tr>
                     <th>ID</th>
-                    <th>numéro</th>
+                    <th>Numéro</th>
                     <th>Statut</th>
                     <th>Actions</th>
                 </tr>
@@ -45,12 +53,14 @@ $salle = getRoom($pdo);
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
-                    <tr><td colspan="12" class="text-center">Aucun matériel trouvé.</td></tr>
+                    <tr><td colspan="4" class="text-center">Aucune salle trouvée.</td></tr>
                 <?php endif; ?>
             </tbody>
         </table>
     </div>
-    <a href="dashboard.php" class="btn btn-secondary">Retour</a>
+    <div class="text-center">
+        <a href="dashboard.php" class="btn btn-primary">Retour au dashboard</a>
+    </div>
 </div>
 </body>
 </html>

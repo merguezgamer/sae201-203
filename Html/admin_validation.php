@@ -22,12 +22,21 @@ $reservations = recupererReservationsEnAttente($pdo);
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body >
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Mon Dashboard</a>
+    <div class="d-flex">
+      <a href="..\php\logout.php" class="btn btn-light">Déconnexion</a>
+    </div>
+  </div>
+</nav>
+
 <div class="container mt-5">
     <h2>Réservations à valider</h2>
 
     <table class="table table-bordered">
-        <thead>
+        <thead class="table-dark">
             <tr>
                 <th>Utilisateur</th>
                 <th>Matériel</th>
@@ -61,7 +70,7 @@ $reservations = recupererReservationsEnAttente($pdo);
         </tbody>
     </table>
     <div class="text-center">
-        <a href="dashboard.php" class="btn btn-primary">Retour</a>
+        <a href="dashboard.php" class="btn btn-primary">Retour au dashboard</a>
     </div>
 </div>
 
