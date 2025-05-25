@@ -11,28 +11,21 @@ if (!isset($_GET['id'])) {
 $id = intval($_GET['id']);
 $message = "";
 
-$materiel = getMaterielById($pdo, $id);
-if (!$materiel) {
+$salle = getRoomById($pdo, $id);
+if (!$salle) {
     die("Matériel introuvable.");
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $params = [
-        ':ref' => $_POST['ref'],
-        ':desgnation' => $_POST['desgnation'],
-        ':photo' => $_POST['photo'],
-        ':type' => $_POST['type'],
-        ':date_achat' => $_POST['date_achat'],
-        ':etat' => $_POST['etat'],
-        ':quantite' => $_POST['quantite'],
-        ':descriptif' => $_POST['descriptif'],
-        ':lien' => $_POST['lien'],
-        ':satut' => $_POST['satut']
+        ':id' => $id,
+        ':nom' => $_POST['nom'],
+        ':statut' => $_POST['statut']
     ];
 
-    if (updateMateriel($pdo, $id, $params)) {
+    if (updateSalle($pdo, $id, $params)) {
         $message = "✅ Matériel mis à jour.";
-        $materiel = getMaterielById($pdo, $id);
+        $salle = getRoomById($pdo, $id);
     } else {
         $message = "❌ Erreur lors de la mise à jour.";
     }
@@ -56,7 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <?php endif; ?>
 
     <form method="post" onsubmit="return validerFormulaire();">
-        <?php foreach ($materiel as $key => $value) {
+        <?php foreach ($salle as $key => $value) {
             if ($key === 'id') continue;
         ?>
         <div class="mb-3">

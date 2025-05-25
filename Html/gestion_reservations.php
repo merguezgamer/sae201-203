@@ -1,24 +1,15 @@
 <?php
 session_start();
-require_once '..\php\config.php'; // Ajuste le chemin si nécessaire
+require_once '../php/gestion.php';
+require_once '../php/verifier_admin.php';
+verifierAdmin();
 
-// Suppression de réservation si demandée
+$message = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
-    $stmt = $pdo->prepare("DELETE FROM reservation WHERE id = :id");
-    $stmt->execute([':id' => $_POST['delete_id']]);
-    $message = "✅ Réservation supprimée avec succès.";
+    $message = supprimerReservation($pdo, $_POST['delete_id']);
 }
 
-// Récupérer toutes les réservations
-$stmt = $pdo->query("
-    SELECT r.id, u.nom, u.prenom, m.desgnation, r.quantite, r.statut, 
-           r.date_emprunt, r.heur_emprunt, r.date_rendu, r.heur_rendu
-    FROM reservation r
-    LEFT JOIN utilisateurs u ON r.id_utilisateur = u.id
-    LEFT JOIN materiel m ON r.id_materiel = m.id
-    ORDER BY r.date_emprunt DESC
-");
-$reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
+$reservations = recupererReservations($pdo);
 ?>
 
 <!DOCTYPE html>
@@ -27,6 +18,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta charset="UTF-8">
     <title>Gestion des Réservations</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/gestion_reservations.js" defer></script>
 </head>
 <body class="bg-light">
 <div class="container mt-5">
@@ -61,7 +53,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <td><?= $res['date_emprunt'] ?> à <?= $res['heur_emprunt'] ?></td>
                         <td><?= $res['date_rendu'] ?> à <?= $res['heur_rendu'] ?></td>
                         <td>
-                            <form method="post" onsubmit="return confirm('Confirmer la suppression ?');">
+                            <form method="post" onsubmit="return confirmerSuppression();">
                                 <input type="hidden" name="delete_id" value="<?= $res['id'] ?>">
                                 <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
                             </form>
@@ -73,6 +65,7 @@ $reservations = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php endif; ?>
     <div class="text-center">
         <a href="dashboard.php" class="btn btn-secondary">Retour au Dashboard</a>
+    </div>
 </div>
 </body>
 </html>

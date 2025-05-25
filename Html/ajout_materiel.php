@@ -1,39 +1,14 @@
 <?php
-require_once '..\php\config.php'; // Assure-toi que $pdo est bien initialisé ici
+require_once '../php/ajouter.php';
+require_once '../php/verifier_admin.php';
 session_start();
-if (($_SESSION['role']!== 'admin')) {
-    header("Location: login.php");
-    exit;
-}
+
+verifierAdmin();
 
 $message = "";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $sql = "INSERT INTO materiel 
-        (ref, desgnation, photo, type, date_achat, etat, quantite, descriptif, lien, satut) 
-        VALUES 
-        (:ref, :desgnation, :photo, :type, :date_achat, :etat, :quantite, :descriptif, :lien, :satut)";
-    
-    $stmt = $pdo->prepare($sql);
-
-    $params = [
-        ':ref' => $_POST['ref'],
-        ':desgnation' => $_POST['desgnation'],
-        ':photo' => $_POST['photo'],
-        ':type' => $_POST['type'],
-        ':date_achat' => $_POST['date_achat'],
-        ':etat' => $_POST['etat'],
-        ':quantite' => $_POST['quantite'],
-        ':descriptif' => $_POST['descriptif'],
-        ':lien' => $_POST['lien'],
-        ':satut' => $_POST['satut']
-    ];
-
-    if ($stmt->execute($params)) {
-        $message = "✅ Matériel ajouté avec succès.";
-    } else {
-        $message = "❌ Une erreur est survenue lors de l'ajout.";
-    }
+    $message = ajouterMateriel($pdo, $_POST);
 }
 ?>
 
@@ -43,6 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title>Ajouter un Matériel</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/ajouter_materiel.js" defer></script>
 </head>
 <body class="bg-light">
 <div class="container mt-5">
@@ -52,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="alert alert-info"><?= $message ?></div>
     <?php endif; ?>
 
-    <form method="post" style="background-color:rgb(193, 230, 236); ">
+    <form method="post" onsubmit="return validerFormulaire();" style="background-color:rgb(193, 230, 236); padding:20px;">
         <div class="mb-3">
             <label for="ref" class="form-label">Référence</label>
             <input type="text" class="form-control" id="ref" name="ref">

@@ -1,39 +1,18 @@
 <?php
-require_once '..\php\config.php';
-session_start();
+require_once '../php/config.php';
+require_once '../php/validation.php'; // fichier où tu mets tes fonctions PHP
 
-// Vérifie si c'est bien un admin
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-    header("Location: acceuil.php");
-    exit;
-}
+// verifier que l'utilisateur est un administrateur
+verifierAdmin();
 
-// Traitement validation/refus
+// Traitement validation/refus 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'], $_POST['reservation_id'])) {
-    $reservation_id = $_POST['reservation_id'];
-    $action = $_POST['action'];
-
-    if ($action === 'valider') {
-        $stmt = $pdo->prepare("UPDATE reservation SET statut = 'Validée' WHERE id = :id");
-        $stmt->execute(['id' => $reservation_id]);
-    } elseif ($action === 'refuser') {
-        // Marquer la réservation comme refusée (au lieu de la supprimer)
-        $stmt = $pdo->prepare("UPDATE reservation SET statut = 'Refusée' WHERE id = :id");
-        $stmt->execute(['id' => $reservation_id]);
-    }
+    traiterReservation($pdo, $_POST['reservation_id'], $_POST['action']);
 }
 
 // Récupère les réservations en attente
-$sql = "SELECT r.*, u.nom, u.prenom, m.desgnation 
-        FROM reservation r
-        JOIN utilisateurs u ON r.id_utilisateur = u.id
-        JOIN materiel m ON r.id_materiel = m.id
-        WHERE r.statut = 'en attente'
-        ORDER BY r.date_emprunt";
-
-$reservations = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
+$reservations = recupererReservationsEnAttente($pdo);
 ?>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -68,10 +47,10 @@ $reservations = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
                     <td><?= $r['date_emprunt'] ?> à <?= $r['heur_emprunt'] ?></td>
                     <td><?= $r['duree'] ?> jour(s)</td>
                     <td>
-                        <form method="post" class="d-inline">
+                        <form method="post" class="d-inline" onsubmit="return confirmerAction(this.action.value);">
                             <input type="hidden" name="reservation_id" value="<?= $r['id'] ?>">
-                            <button name="action" value="valider" class="btn btn-success btn-sm">Valider</button>
-                            <button name="action" value="refuser" class="btn btn-danger btn-sm">Refuser</button>
+                            <button type="submit" name="action" value="valider" class="btn btn-success btn-sm">Valider</button>
+                            <button type="submit" name="action" value="refuser" class="btn btn-danger btn-sm">Refuser</button>
                         </form>
                     </td>
                 </tr>
@@ -83,5 +62,7 @@ $reservations = $pdo->query($sql)->fetchAll(PDO::FETCH_ASSOC);
         <a href="dashboard.php" class="btn btn-primary">Retour</a>
     </div>
 </div>
+
+<script src="fonction_validation.js"></script>
 </body>
 </html>

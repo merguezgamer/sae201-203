@@ -1,3 +1,9 @@
+<?php
+require_once '../php/config.php';
+require_once '../php/verifier_admin.php';
+verifierAdmin();
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
   <head>
@@ -25,10 +31,10 @@
         <nav class="col-md-2 d-none d-md-block sidebar">
           <div class="pt-3">
             <a href="acceuil.php">Accueil</a>
-            <a href="ajout_materiel.php">Ajout materiel</a>
-            <a href="liste_materiel.php">liste_materiel</a>
-            <a href="admin_validation.php">validation</a>
-            <a href="gestion_reservations.php">validation</a>
+            <a href="liste_materiel_admin.php">liste materiel</a>
+            <a href="liste_salle_admin.php">liste salle</a>
+            <a href="admin_validation.php">validation reservation</a>
+            <a href="gestion_reservations.php">gestion reservations</a>
           </div>
         </nav>
 

@@ -10,45 +10,8 @@
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <style>
-        body {
-            background-color: #f9f9f9;
-        }
+    <link rel="stylesheet" href="../css/style.css">
 
-        .navbar {
-            background-color: #2c2f8f;
-        }
-
-        .navbar-brand img {
-            height: 40px;
-        }
-
-        .nav-link {
-            color: white !important;
-            font-weight: 500;
-            margin-left: 10px;
-        }
-
-        .hero-section {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 30px;
-            margin-top: 30px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .sidebar {
-            background-color: #e3f7fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 30px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .accordion-button {
-            background-color: #d0eff5;
-        }
-    </style>
 </head>
 <body>
 

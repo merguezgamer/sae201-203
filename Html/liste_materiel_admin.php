@@ -4,6 +4,7 @@ require_once '../php/verifier_admin.php';
 
 $materiels = getMateriels($pdo);
 
+verifierAdmin();
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +18,8 @@ $materiels = getMateriels($pdo);
 <body class="bg-light">
 <div class="container mt-5">
     <h2 class="mb-4">Liste du Matériel</h2>
+
+    <a href="ajout_materiel.php" class="btn btn-success mb-3">➕ Ajouter un matériel</a>
 
     <div class="table-responsive">
         <table class="table table-bordered table-striped align-middle">
@@ -33,6 +36,7 @@ $materiels = getMateriels($pdo);
                     <th>Descriptif</th>
                     <th>Lien</th>
                     <th>Statut</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,6 +66,10 @@ $materiels = getMateriels($pdo);
                                 <?php endif; ?>
                             </td>
                             <td><?= htmlspecialchars($m['satut']) ?></td>
+                            <td>
+                                <a href="modifier_materiel.php?id=<?= $m['id'] ?>" class="btn btn-sm btn-warning">✏️ Modifier</a>
+                                <a href="../php/supprimer_materiel.php?id=<?= $m['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirmerSuppression();">🗑️ Supprimer</a>
+                            </td>
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
