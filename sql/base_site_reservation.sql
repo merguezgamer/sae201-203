@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : jeu. 15 mai 2025 à 15:12
+-- Généré le : mar. 27 mai 2025 à 13:28
 -- Version du serveur : 10.4.32-MariaDB
 -- Version de PHP : 8.2.12
 
@@ -40,6 +40,14 @@ CREATE TABLE `materiel` (
   `lien` varchar(50) DEFAULT NULL,
   `satut` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `materiel`
+--
+
+INSERT INTO `materiel` (`id`, `ref`, `desgnation`, `photo`, `type`, `date_achat`, `etat`, `quantite`, `descriptif`, `lien`, `satut`) VALUES
+(1, 'CAM001', 'Caméra', 'camera1.jpg', 'Caméra', '2023-10-15', 'bon', 10, 'Caméra HD ', 'http://lien-vers-camera1', 'disponible'),
+(2, 'MIC001', 'Microphone sans fil', 'micro1.jpg', 'Micro', '2023-09-20', 'cassé', 5, 'Microphone avec réduction de bruit', 'http://lien-vers-micro1', 'indisponible');
 
 -- --------------------------------------------------------
 
@@ -85,6 +93,14 @@ CREATE TABLE `salle` (
   `statut` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+--
+-- Déchargement des données de la table `salle`
+--
+
+INSERT INTO `salle` (`id`, `nom`, `statut`) VALUES
+(8, 'salle 203', 'disponible '),
+(9, 'salle 205', 'indisponible');
+
 -- --------------------------------------------------------
 
 --
@@ -96,9 +112,22 @@ CREATE TABLE `utilisateurs` (
   `email` varchar(50) DEFAULT NULL,
   `nom` varchar(50) DEFAULT NULL,
   `prenom` varchar(50) DEFAULT NULL,
-  `Mot_de_passe` varchar(50) DEFAULT NULL,
-  `adresse_postal` varchar(50) DEFAULT NULL
+  `Mot_de_passe` varchar(150) DEFAULT NULL,
+  `adresse_postal` varchar(50) DEFAULT NULL,
+  `role` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `utilisateurs`
+--
+
+INSERT INTO `utilisateurs` (`id`, `email`, `nom`, `prenom`, `Mot_de_passe`, `adresse_postal`, `role`) VALUES
+(5, 'fouadtir@hotmail.fr', 'fouad', 'tir', '$2y$10$gbMbuFKLhoQxuFyF0NUGQeHiPVLPV8caBsc0lpe7W8EpUUr0NVg.e', NULL, 'enseignant'),
+(7, 'test@test.fr', 'test', 'test', '$2y$10$nOIIRpYrN2mBazQy7sSrIuVLe8xyJQaTg7RZxmnR6YdosoXQ07zl.', NULL, 'etudiant'),
+(8, 'admin@example.com', 'admin', 'admin', '$2y$10$WT2jjGx3yUylaHpLD.9XZONNEhuG/0q.uFNIc0aY5kuh2y8.lqRQ6', NULL, 'admin'),
+(9, 'martin@mail.com', 'martin', 'dupont', '$2y$10$1DZTLtl8jrEXj4i6C8RlZOP5LSXox9lLmDyi3vlZsfB8SbP51zxA6', NULL, 'etudiant'),
+(10, 'agent@mail.com', 'agent', 'agent', '$2y$10$Snc5rNQXhNDoUJD6C0x2WOSoxfxMtn4VzZjl0TT1R.601v3iyosH2', NULL, 'agent'),
+(11, 'dupont@exemple.com', 'dupont', 'dupont', '$2y$10$7.36jM0IiFLTmuxk3C9a2OC22scFpxZiIYO2C0P.BDbm4TuW/9kbC', NULL, 'etudiant');
 
 --
 -- Index pour les tables déchargées
@@ -144,7 +173,7 @@ ALTER TABLE `utilisateurs`
 -- AUTO_INCREMENT pour la table `materiel`
 --
 ALTER TABLE `materiel`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `message`
@@ -156,13 +185,13 @@ ALTER TABLE `message`
 -- AUTO_INCREMENT pour la table `salle`
 --
 ALTER TABLE `salle`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateurs`
 --
 ALTER TABLE `utilisateurs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- Contraintes pour les tables déchargées
