@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col col-5 offset-1 ">
+        <div class="col col-6 offset-3 ">
             <div class="sous-titre text-center pb-4">
                 <h2>Service central d'authentification</h2>
             </div>
@@ -51,9 +51,9 @@
                     <option value="" disabled selected>Choisissez votre rôle</option>
                     <option value="etudiant">Etudiant</option>
                     <option value="enseignant">Enseignant</option>
-                    <option value="admin">admin</option>
+                    <option value="agent">Agent</option>
                 </select>
-                <button type="submit" class="btn btn-primary">Se connecter</button>
+                <button type="submit" class="btn btn-primary">S'inscrire</button>
             </form>
             <div>
                 <p>Vous avez déjà un compte ? <a href="..\index.php">Connectez-vous</a></p>

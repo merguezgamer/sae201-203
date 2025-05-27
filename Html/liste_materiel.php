@@ -38,6 +38,11 @@ $materiels = getMateriels($pdo);
                     <a class="nav-link" href="dashboard.php">Admin</a>
                 </li>
                 <?php endif; ?>
+                <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'agent'): ?>
+                <li class="nav-item">
+                    <a class="nav-link" href="liste_reservation.php">liste reservation</a>
+                </li>
+                <?php endif; ?>
                 <?php if (isset($_SESSION['role'])): ?>
                 <li class="nav-item">
                     <a class="btn btn-outline-light ms-2 bg-light" href="..\php\logout.php">Déconnexion</a>

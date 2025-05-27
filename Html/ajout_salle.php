@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <input type="text" class="form-control" id="statut" name="statut">
         </div>
         <button type="submit" class="btn btn-primary">Ajouter</button>
-        <a href="dashboard.php" class="btn btn-secondary">Retour</a>
+        <a href="liste_salle_admin.php" class="btn btn-secondary">Retour</a>
     </form>
 </div>
 </body>

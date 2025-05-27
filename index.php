@@ -32,7 +32,7 @@
         </div>
         <form action="php\login.php" method="post">
             <div class="mb-3">
-                <input type="text" class="form-control" id="courriel" name="courriel" placeholder="Login" required>
+                <input type="text" class="form-control" id="courriel" name="courriel" placeholder="Adresse mail universitaire" required>
             </div>
             <div class="mb-3">
                 <input type="password" class="form-control" id="password" name="password" placeholder="Mot de passe" required>

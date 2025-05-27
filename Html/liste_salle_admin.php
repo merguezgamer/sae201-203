@@ -45,7 +45,7 @@ $salle = getRoom($pdo);
                         <tr>
                             <td><?= htmlspecialchars($s['id']) ?></td>
                             <td><?= htmlspecialchars($s['nom']) ?></td>
-                            <td><?= htmlspecialchars($s['satut']) ?></td>
+                            <td><?= htmlspecialchars($s['statut']) ?></td>
                             <td>
                                 <a href="modifier_salle.php?id=<?= $s['id'] ?>" class="btn btn-sm btn-warning">✏️ Modifier</a>
                                 <a href="../php/supprimer_salle.php?id=<?= $s['id'] ?>" class="btn btn-sm btn-danger" onclick="return confirmerSuppression();">🗑️ Supprimer</a>

@@ -1,0 +1,70 @@
+<?php
+require_once '../php/gestion.php';
+
+$message = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_id'])) {
+    $message = supprimerReservation($pdo, $_POST['delete_id']);
+}
+
+$reservations = recupererReservations($pdo);
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des Réservations</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/gestion_reservations.js" defer></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Mon Dashboard</a>
+    <div class="d-flex">
+      <a href="..\php\logout.php" class="btn btn-light">Déconnexion</a>
+    </div>
+  </div>
+</nav>
+<div class="container mt-5">
+    <h1 class="mb-4">Gestion des Réservations</h1>
+
+    <?php if (!empty($message)): ?>
+        <div class="alert alert-success"><?= $message ?></div>
+    <?php endif; ?>
+
+    <?php if (empty($reservations)): ?>
+        <div class="alert alert-warning">Aucune réservation trouvée.</div>
+    <?php else: ?>
+        <table class="table table-bordered table-striped">
+            <thead class="table-dark">
+                <tr>
+                    <th>Utilisateur</th>
+                    <th>Matériel</th>
+                    <th>Quantité</th>
+                    <th>Statut</th>
+                    <th>Emprunt</th>
+                    <th>Retour</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($reservations as $res): ?>
+                    <tr>
+                        <td><?= htmlspecialchars($res['prenom'] . ' ' . $res['nom']) ?></td>
+                        <td><?= htmlspecialchars($res['desgnation']) ?></td>
+                        <td><?= $res['quantite'] ?></td>
+                        <td><?= htmlspecialchars($res['statut']) ?></td>
+                        <td><?= $res['date_emprunt'] ?> à <?= $res['heur_emprunt'] ?></td>
+                        <td><?= $res['date_rendu'] ?> à <?= $res['heur_rendu'] ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    <?php endif; ?>
+    <div class="text-center">
+        <a href="dashboard.php" class="btn btn-primary">Retour au dashboard</a>
+    </div>
+</div>
+</body>
+</html>
